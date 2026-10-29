@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Bài tập triển khai website tự động với GitHub Actions của Đỗ Tuấn Thành."
+    />
+    <!-- Cố ý bỏ thẻ title để thực nghiệm pipeline thất bại. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header" aria-label="Điều hướng chính">
+        <a class="brand" href="#top" aria-label="Về đầu trang">
+          <span class="brand-mark" aria-hidden="true">DT</span>
+          <span>Thanh<span class="brand-dot">.</span>dev</span>
+        </a>
+        <nav>
+          <a href="#pipeline">Pipeline</a>
+          <a href="#about">Thông tin</a>
+        </nav>
+        <span class="live-badge"><i></i> Deployed</span>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span>01</span> Bài tập cá nhân · DevOps</p>
+            <h1 id="hero-title">Đỗ Tuấn Thành <em>— 1822031313</em></h1>
+            <p class="hero-lead">
+              Một website tĩnh được kiểm tra và triển khai tự động bằng
+              <strong>GitHub Actions</strong>. Mỗi lần push là một lần pipeline
+              làm việc.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#pipeline">
+                Xem pipeline <span aria-hidden="true">↘</span>
+              </a>
+              <a
+                class="button button-ghost"
+                id="repo-link"
+                href="https://github.com/tuanthanh2203/devops-1822031313"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub Repository <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="terminal-card" aria-label="Thông tin lần triển khai">
+            <div class="terminal-bar">
+              <span></span><span></span><span></span>
+              <p>github-actions / deploy</p>
+            </div>
+            <div class="terminal-body">
+              <p><span class="prompt">$</span> git push origin main</p>
+              <p class="terminal-muted">→ Triggering workflow...</p>
+              <p><span class="check">✓</span> HTML validation passed</p>
+              <p><span class="check">✓</span> Artifact uploaded</p>
+              <p><span class="check">✓</span> GitHub Pages deployed</p>
+              <div class="terminal-result">
+                <span class="pulse"></span>
+                <span>STATUS</span>
+                <strong>LIVE</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="stats" aria-label="Thống kê dự án">
+          <article>
+            <strong>02</strong>
+            <span>Jobs liên kết</span>
+          </article>
+          <article>
+            <strong>03</strong>
+            <span>File website</span>
+          </article>
+          <article>
+            <strong>01</strong>
+            <span>Lệnh push để deploy</span>
+          </article>
+          <article>
+            <strong>100%</strong>
+            <span>Tự động hóa</span>
+          </article>
+        </section>
+
+        <section class="pipeline-section" id="pipeline" aria-labelledby="pipeline-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span>02</span> CI/CD Workflow</p>
+              <h2 id="pipeline-title">Từ code đến website,<br />trong một luồng.</h2>
+            </div>
+            <p>
+              Job <code>deploy</code> chỉ bắt đầu khi job <code>check</code>
+              hoàn thành thành công. Nhấn nút để xem pipeline mô phỏng.
+            </p>
+          </div>
+
+          <div class="pipeline" id="pipeline-flow">
+            <article class="pipeline-step" data-step="1">
+              <div class="step-icon">01</div>
+              <span class="step-status">READY</span>
+              <h3>Push code</h3>
+              <p>Commit mới trên nhánh <code>main</code> kích hoạt workflow.</p>
+            </article>
+            <div class="connector" aria-hidden="true"><span></span></div>
+            <article class="pipeline-step" data-step="2">
+              <div class="step-icon">02</div>
+              <span class="step-status">WAITING</span>
+              <h3>Check</h3>
+              <p>Kiểm tra file và xác nhận thẻ <code>&lt;title&gt;</code>.</p>
+            </article>
+            <div class="connector" aria-hidden="true"><span></span></div>
+            <article class="pipeline-step" data-step="3">
+              <div class="step-icon">03</div>
+              <span class="step-status">WAITING</span>
+              <h3>Deploy</h3>
+              <p>Đưa artifact hợp lệ lên môi trường GitHub Pages.</p>
+            </article>
+          </div>
+
+          <div class="pipeline-controls">
+            <button class="button button-primary" id="run-pipeline" type="button">
+              <span class="run-icon" aria-hidden="true">▶</span>
+              Chạy thử pipeline
+            </button>
+            <p id="pipeline-message" aria-live="polite">Pipeline sẵn sàng.</p>
+          </div>
+        </section>
+
+        <section class="about-section" id="about" aria-labelledby="about-title">
+          <div class="about-card about-intro">
+            <p class="eyebrow"><span>03</span> Sinh viên thực hiện</p>
+            <h2 id="about-title">Đỗ Tuấn Thành</h2>
+            <p>
+              Bài tập thực hành quy trình CI/CD cơ bản: viết code, quản lý mã
+              nguồn, tự động kiểm tra và tự động triển khai.
+            </p>
+          </div>
+          <dl class="about-card student-info">
+            <div>
+              <dt>Mã số sinh viên</dt>
+              <dd>1822031313</dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd>1822031313@dntu.edu.vn</dd>
+            </div>
+            <div>
+              <dt>Công nghệ</dt>
+              <dd>HTML · CSS · JavaScript</dd>
+            </div>
+            <div>
+              <dt>Triển khai</dt>
+              <dd>GitHub Actions · Pages</dd>
+            </div>
+          </dl>
+        </section>
+      </main>
+
+      <footer>
+        <p>Designed &amp; deployed by <strong>Đỗ Tuấn Thành</strong></p>
+        <p>© <span id="year"></span> · DNTU</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
